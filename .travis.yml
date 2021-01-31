@@ -5,4 +5,16 @@ services:
   - docker
 
 before_install:
-  - docker build -t pash04/simple-app .
+  - docker build -t pash04/simple-web-app .
+
+deploy:
+  provider: elasticbeanstalk
+  region: "ap-south-1"
+  app: "simple-web-app"
+  env: "Simplewebapp-env"
+  bucket_name: "elasticbeanstalk-ap-south-1-462623432869"
+  bucket_path: "simple-web-app"
+  on:
+    branch: master
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
