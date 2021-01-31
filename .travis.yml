@@ -6,4 +6,3 @@ services:
 
 before_install:
   - docker build -t pash04/simple-app .
-
