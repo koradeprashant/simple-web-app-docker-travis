@@ -33,6 +33,7 @@ test {
 tasks {
     bootJar {
         archiveFileName.set("app.jar")
+        mainClassName = 'com.web.Main'
     }
 }
 
