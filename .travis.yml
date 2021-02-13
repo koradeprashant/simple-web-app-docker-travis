@@ -22,4 +22,4 @@ before_install:
 after_success:
   - docker build -t pash04/simple-web-app .
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push -t pash04/simple-web-app
+  - docker push pash04/simple-web-app
