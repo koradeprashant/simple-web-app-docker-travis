@@ -6,9 +6,10 @@ WORKDIR /home/app
 #COPY ./settings.gradle .
 COPY . .
 #RUN gradle clean build --no-daemon > /dev/null 2>&1 || true
+RUN gradle clean build --no-daemon
 
 #COPY ./build/libs/app.jar .
-RUN gradle assemble --no-daemon
+#RUN gradle assemble --no-daemon
 
 EXPOSE 80
 CMD ["java", "-jar", "-Dserver.port=80", "./build/libs/app.jar"]
