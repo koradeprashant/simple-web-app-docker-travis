@@ -6,7 +6,11 @@
       "hostname": "web",
       "image": "pash04/simple-web-app",
       "essential": true,
-      "memory": 400
+      "portMappings": [{
+          "hostPort": 80,
+          "containerPort": 80
+        }],
+      "memory": 3000
     }
   ]
 }
