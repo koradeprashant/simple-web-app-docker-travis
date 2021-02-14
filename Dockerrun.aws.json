@@ -1,0 +1,12 @@
+{
+  "AWSEBDockerrunVersion": "2",
+  "containerDefinitions": [
+    {
+      "name": "simple-web-app",
+      "hostname": "web",
+      "image": "pash04/simple-web-app",
+      "essential": true,
+      "memory": 400
+    }
+  ]
+}

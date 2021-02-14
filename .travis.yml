@@ -7,6 +7,11 @@ services:
 before_install:
   - docker build -t pash04/simple-web-app .
 
+after_success:
+  - docker build -t pash04/simple-web-app .
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
+  - docker push pash04/simple-web-app
+
 #deploy:
 #  provider: elasticbeanstalk
 #  region: "ap-south-1"
@@ -18,8 +23,3 @@ before_install:
 #    branch: master
 #  access_key_id: $AWS_ACCESS_KEY
 #  secret_access_key: $AWS_SECRET_KEY
-
-after_success:
-  - docker build -t pash04/simple-web-app .
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push pash04/simple-web-app
