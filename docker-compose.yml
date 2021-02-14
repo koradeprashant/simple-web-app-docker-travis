@@ -1,17 +1,17 @@
-version: '3'
-services:
-  postgresdb:
-    image: 'postgres:latest'
-    environment:
-      POSTGRES_PASSWORD: 'test'
-      POSTGRES_DB: 'test'
-  web-app:
-    build: .
-    depends_on:
-      - postgresdb
-    ports:
-    - '80:80'
-    environment:
-      - PG_HOST=postgresdb
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASS=test
+#version: '3'
+#services:
+#  postgresdb:
+#    image: 'postgres:latest'
+#    environment:
+#      POSTGRES_PASSWORD: 'test'
+#      POSTGRES_DB: 'test'
+#  web-app:
+#    build: .
+#    depends_on:
+#      - postgresdb
+#    ports:
+#    - '80:80'
+#    environment:
+#      - PG_HOST=postgresdb
+#      - POSTGRES_USER=postgres
+#      - POSTGRES_PASS=test
