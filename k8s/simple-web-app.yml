@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: simple-web-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      component: web-be-app
+  template:
+    metadata:
+      labels:
+        component: web-be-app
+    spec:
+      containers:
+        - name: simple-web-app
+          image: pash04/simple-web-app
+          ports:
+            - containerPort: 80
+          env:
+            - name: PG_HOST
+              value: jpostgres-cluster-ip-service
+            - name: POSTGRES_USER
+              value: postgres
+            - name: POSTGRES_PASS
+              valueFrom:
+                secretKeyRef:
+                  name: pgpassword
+                  key: PGPASSWORD
+            - name: JPA_HIBERNATE_DDL
+              value: validate
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: simple-web-app-cluster-ip-service
+spec:
+  type: ClusterIP
+  selector:
+    component: web-be-app
+  ports:
+    - port: 80
+      targetPort: 80
