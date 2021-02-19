@@ -29,6 +29,8 @@ spec:
                   key: PGPASSWORD
             - name: JPA_HIBERNATE_DDL
               value: validate
+            - name: PG_DATABASE
+              value: postgres
 
 ---
 
