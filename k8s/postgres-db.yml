@@ -31,8 +31,7 @@ spec:
                 secretKeyRef:
                   name: pgpassword
                   key: PGPASSWORD
-            - name: POSTGRES_DB
-              value: test
+
 ---
 apiVersion: v1
 kind: Service
