@@ -4,12 +4,17 @@ sudo: required
 services:
   - docker
 
+env:
+  global:
+    - SHA=$(git rev-parse HEAD)
+
 before_install:
-  - docker build -t pash04/simple-web-app .
+  - docker build -t pash04/simple-web-app:$SHA -t pash04/simple-web-app:latest .
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
-  - docker push pash04/simple-web-app
+  - docker push pash04/simple-web-app:$SHA
+  - docker push pash04/simple-web-app:latest
 
 #deploy:
 #  provider: elasticbeanstalk
